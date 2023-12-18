@@ -6,10 +6,16 @@
  * @line_number: number of the line read
  **/
 
-void push(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	int num = 0;
 	stack_t *new_node;
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
