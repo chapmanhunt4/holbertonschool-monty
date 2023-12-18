@@ -26,6 +26,12 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	num = atoi(token);
+	if (strspn(token, "0123456789-+") != strlen(token))
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
 	new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
