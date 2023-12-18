@@ -29,10 +29,18 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((read = getline(&line, &len, file)) != -1)
+	read = getline(&line, &len, file);
+	while (read != -1)
 	{
 		opcode = strtok(line, " \t\n");
+		if (opcode == NULL)
+		{
+			line_number = line_number + 1;
+			read = getline(&line, &len, file);
+			continue;
+		}
 		execute_op(opcode, &head, line_number);
+		read = getline(&line, &len, file);
 		line_number = line_number + 1;
 	}
 	free(line);
