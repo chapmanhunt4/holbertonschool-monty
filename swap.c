@@ -19,5 +19,5 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	first->next = second->next;
 	second->next = first;
-	first = second;
+	*stack = second;
 }
