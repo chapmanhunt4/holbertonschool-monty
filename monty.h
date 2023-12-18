@@ -40,5 +40,6 @@ int main(int argc, char **argv);
 void execute_op(char *opcode, stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *stack);
 
 #endif

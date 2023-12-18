@@ -35,6 +35,7 @@ int main(int argc, char **argv)
 		execute_op(opcode, &head, line_number);
 		line_number = line_number + 1;
 	}
+	free_stack(head);
 	fclose(file);
 	return (EXIT_SUCCESS);
 }
